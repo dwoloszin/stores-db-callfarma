@@ -147,6 +147,12 @@ def _promo_active(html: str) -> bool:
         now = datetime.now(timezone.utc)
         d0 = datetime.fromisoformat(ini.replace("Z", "+00:00"))
         d1 = datetime.fromisoformat(fim.replace("Z", "+00:00"))
+        # Some INIPRO/FIMPRO come without an offset (naive) -> assume UTC so we
+        # never compare naive vs aware datetimes.
+        if d0.tzinfo is None:
+            d0 = d0.replace(tzinfo=timezone.utc)
+        if d1.tzinfo is None:
+            d1 = d1.replace(tzinfo=timezone.utc)
         return d0 <= now <= d1
     except ValueError:
         return True
