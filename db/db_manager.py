@@ -1026,7 +1026,7 @@ STORE_REGISTRY: Dict[str, type] = {
     "indiana":          IndianaDB,
     "globo":            GloboDB,
     "permanente":       PermanenteDB,
-    "minasbrasil":      MinasBrasilDB,
+    # minasbrasil DROPPED 2026-08-21 (10h/59k, no bulk EAN source) — class kept dormant below
     "anossadrogaria":   AnossaDrogariaDB,
     "moderna":          ModernaDB,
     "santalucia":       SantaLuciaDB,
